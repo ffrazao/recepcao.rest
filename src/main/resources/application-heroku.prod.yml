@@ -1,15 +1,15 @@
 spring:
 # BANCO DE DADOS
   datasource:
-    url: jdbc:mysql://us-cdbr-east-02.cleardb.com/heroku_c7c45a906fc2b28?reconnect=true
-    username: b248a48758c239
-    password: ef4068cc
+    url: jdbc:mysql://localhost/recepcao?reconnect=true
+    username: root
+    password: root
     
 # E-MAIL
   mail:
     host: smtp.gmail.com
     username: recepcao@gmail.com
-    password: AduboDesc*2020!
+    password: Recepcao*2020!
     #password: fuxpykfclldpxzdb
     properties:
       mail:
@@ -27,7 +27,7 @@ spring:
 logging:
   level:
     # root: debug
-    com.frazao.lacodeamorrest: trace
+    com.frazao.recepcao: trace
     org.hibernate.SQL: off
     org.springframework.web: off
     org.springframework.security: off
@@ -40,7 +40,7 @@ logging:
 # VALORES PADRAO
 default:
 # BANCO DE DADOS
-  database_schema: heroku_c7c45a906fc2b28
+  database_schema: recepcao
 # E-MAIL
   sender: recepcao@gmail.com
   recipient: recepcao@gmail.com
