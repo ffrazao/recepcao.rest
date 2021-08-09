@@ -9,11 +9,11 @@ import com.frazao.recepcao.modelo.dto.recepcao.PessoaEnderecoFiltroDTO;
 import com.frazao.recepcao.modelo.entidade.recepcao.PessoaEndereco;
 
 @Service
-public class PessoaEnderecoBO extends CRUDBO<PessoaEndereco, java.lang.Integer, PessoaEnderecoFiltroDTO, PessoaEnderecoDAO> {
+public class PessoaEnderecoBO
+		extends CRUDBO<PessoaEndereco, java.lang.Integer, PessoaEnderecoFiltroDTO, PessoaEnderecoDAO> {
 
-   public PessoaEnderecoBO(@Autowired PessoaEnderecoDAO dao) {
-      super(PessoaEndereco.class, dao);
-   }
+	public PessoaEnderecoBO(@Autowired PessoaEnderecoDAO dao) {
+		super(PessoaEndereco.class, dao);
+	}
 
 }
-

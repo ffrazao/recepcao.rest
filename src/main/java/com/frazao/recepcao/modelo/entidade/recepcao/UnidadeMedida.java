@@ -56,7 +56,7 @@ public class UnidadeMedida extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "valor_base")
 	private BigDecimal valorBase;
-	
+
 	public UnidadeMedida(Integer id) {
 		super(id);
 	}

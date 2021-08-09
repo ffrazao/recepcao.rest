@@ -23,16 +23,16 @@ import lombok.Data;
 @JsonTypeIdResolver(LowerCaseClassNameResolver.class)
 public class RestApiError {
 
+	private String debugMessage;
+
+	private String message;
+
 	private HttpStatus status;
-	
+
+	private List<ApiSubError> subErrors;
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
 	private LocalDateTime timestamp;
-	
-	private String message;
-	
-	private String debugMessage;
-	
-	private List<ApiSubError> subErrors;
 
 	private RestApiError() {
 		timestamp = LocalDateTime.now();
@@ -43,17 +43,17 @@ public class RestApiError {
 		this.status = status;
 	}
 
-	public RestApiError(HttpStatus status, Throwable ex) {
-		this();
-		this.status = status;
-		this.message = "Unexpected error";
-		this.debugMessage = ex.getLocalizedMessage();
-	}
-
 	public RestApiError(HttpStatus status, String message, Throwable ex) {
 		this();
 		this.status = status;
 		this.message = message;
+		this.debugMessage = ex.getLocalizedMessage();
+	}
+
+	public RestApiError(HttpStatus status, Throwable ex) {
+		this();
+		this.status = status;
+		this.message = "Unexpected error";
 		this.debugMessage = ex.getLocalizedMessage();
 	}
 
@@ -62,31 +62,6 @@ public class RestApiError {
 			subErrors = new ArrayList<>();
 		}
 		subErrors.add(subError);
-	}
-
-	private void addValidationError(String object, String field, Object rejectedValue, String message) {
-		addSubError(new ApiValidationError(object, field, rejectedValue, message));
-	}
-
-	private void addValidationError(String object, String message) {
-		addSubError(new ApiValidationError(object, message));
-	}
-
-	private void addValidationError(FieldError fieldError) {
-		this.addValidationError(fieldError.getObjectName(), fieldError.getField(), fieldError.getRejectedValue(),
-				fieldError.getDefaultMessage());
-	}
-
-	public void addValidationErrors(List<FieldError> fieldErrors) {
-		fieldErrors.forEach(this::addValidationError);
-	}
-
-	private void addValidationError(ObjectError objectError) {
-		this.addValidationError(objectError.getObjectName(), objectError.getDefaultMessage());
-	}
-
-	public void addValidationError(List<ObjectError> globalErrors) {
-		globalErrors.forEach(this::addValidationError);
 	}
 
 	/**
@@ -98,6 +73,31 @@ public class RestApiError {
 	private void addValidationError(ConstraintViolation<?> cv) {
 		this.addValidationError(cv.getRootBeanClass().getSimpleName(),
 				((PathImpl) cv.getPropertyPath()).getLeafNode().asString(), cv.getInvalidValue(), cv.getMessage());
+	}
+
+	private void addValidationError(FieldError fieldError) {
+		this.addValidationError(fieldError.getObjectName(), fieldError.getField(), fieldError.getRejectedValue(),
+				fieldError.getDefaultMessage());
+	}
+
+	public void addValidationError(List<ObjectError> globalErrors) {
+		globalErrors.forEach(this::addValidationError);
+	}
+
+	private void addValidationError(ObjectError objectError) {
+		this.addValidationError(objectError.getObjectName(), objectError.getDefaultMessage());
+	}
+
+	private void addValidationError(String object, String message) {
+		addSubError(new ApiValidationError(object, message));
+	}
+
+	private void addValidationError(String object, String field, Object rejectedValue, String message) {
+		addSubError(new ApiValidationError(object, field, rejectedValue, message));
+	}
+
+	public void addValidationErrors(List<FieldError> fieldErrors) {
+		fieldErrors.forEach(this::addValidationError);
 	}
 
 	public void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {

@@ -54,7 +54,7 @@ public class Endereco extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "uf")
 	private String uf;
-	
+
 	public Endereco(Integer id) {
 		super(id);
 	}

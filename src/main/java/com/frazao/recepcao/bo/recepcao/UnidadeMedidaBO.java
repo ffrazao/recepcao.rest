@@ -9,11 +9,11 @@ import com.frazao.recepcao.modelo.dto.recepcao.UnidadeMedidaFiltroDTO;
 import com.frazao.recepcao.modelo.entidade.recepcao.UnidadeMedida;
 
 @Service
-public class UnidadeMedidaBO extends CRUDBO<UnidadeMedida, java.lang.Integer, UnidadeMedidaFiltroDTO, UnidadeMedidaDAO> {
+public class UnidadeMedidaBO
+		extends CRUDBO<UnidadeMedida, java.lang.Integer, UnidadeMedidaFiltroDTO, UnidadeMedidaDAO> {
 
-   public UnidadeMedidaBO(@Autowired UnidadeMedidaDAO dao) {
-      super(UnidadeMedida.class, dao);
-   }
+	public UnidadeMedidaBO(@Autowired UnidadeMedidaDAO dao) {
+		super(UnidadeMedida.class, dao);
+	}
 
 }
-

@@ -10,14 +10,9 @@ import lombok.NoArgsConstructor;
 public abstract class EntidadeBaseTemId<Id> extends EntidadeBase implements TemId<Id> {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Id id;
 
-	@Override
-	public String toString() {
-		return String.format("Id = %d", this.getId());
-	}
-	
 	public EntidadeBaseTemId(Id id) {
 		super();
 		this.setId(id);
@@ -31,6 +26,11 @@ public abstract class EntidadeBaseTemId<Id> extends EntidadeBase implements TemI
 	@Override
 	public void setId(Id id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Id = %d", this.getId());
 	}
 
 }

@@ -35,15 +35,15 @@ public class Config implements WebMvcConfigurer {
 	private ObjectMapper mapper;
 
 	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(localeChangeInterceptor);
-	}
-
-	@Override
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addConverter(new StringToLocalDateConverter());
 		registry.addConverter(new StringToLocalDateTimeConverter());
 		registry.addConverter(new StringToBigDecimalConverter());
+	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(localeChangeInterceptor);
 	}
 
 	@PostConstruct

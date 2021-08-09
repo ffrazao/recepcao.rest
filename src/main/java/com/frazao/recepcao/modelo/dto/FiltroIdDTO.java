@@ -8,7 +8,7 @@ import lombok.Data;
 public class FiltroIdDTO implements FiltroDTO {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String[] id;
 
 	@Override

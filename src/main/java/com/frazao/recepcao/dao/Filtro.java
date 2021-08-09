@@ -13,24 +13,23 @@ import com.frazao.recepcao.modelo.dto.FiltroDTO;
 
 public interface Filtro<T, F extends FiltroDTO> {
 
-	default String adWhere(final StringBuilder where) {
-		return where.length() == 0 ? "WHERE  " : "AND    ";
-	}
-
 	default String adOr(final StringBuilder or) {
 		return or.length() == 0 ? "              " : "        OR    ";
 	}
 
-	Collection<T> filtrar(F f);
-
-	default String in(final Collection<?> itens) {
-		return itens != null
-				? String.format("(%s)", itens.stream().map(i -> " ?").collect(Collectors.joining(",")).trim())
-				: null;
+	default String adWhere(final StringBuilder where) {
+		return where.length() == 0 ? "WHERE  " : "AND    ";
 	}
 
-	default String like(final String arg) {
-		return arg != null ? String.format("%%%s%%", arg.replaceAll(" ", "%")) : null;
+	Collection<T> filtrar(F f);
+
+	default Integer[] idNao(String[] id) {
+		List<Integer> result = new ArrayList<>();
+		if (!ObjectUtils.isEmpty(id)) {
+			result = Stream.of(id).filter(v -> v.matches("^(\\!)(\\d)+$"))
+					.map(v -> NumberUtils.toInt(v.replaceAll("\\!", ""))).collect(Collectors.toList());
+		}
+		return result.toArray(new Integer[result.size()]);
 	}
 
 	default Integer[] idSim(String[] id) {
@@ -42,13 +41,14 @@ public interface Filtro<T, F extends FiltroDTO> {
 		return result.toArray(new Integer[result.size()]);
 	}
 
-	default Integer[] idNao(String[] id) {
-		List<Integer> result = new ArrayList<>();
-		if (!ObjectUtils.isEmpty(id)) {
-			result = Stream.of(id).filter(v -> v.matches("^(\\!)(\\d)+$"))
-					.map(v -> NumberUtils.toInt(v.replaceAll("\\!", ""))).collect(Collectors.toList());
-		}
-		return result.toArray(new Integer[result.size()]);
+	default String in(final Collection<?> itens) {
+		return itens != null
+				? String.format("(%s)", itens.stream().map(i -> " ?").collect(Collectors.joining(",")).trim())
+				: null;
+	}
+
+	default String like(final String arg) {
+		return arg != null ? String.format("%%%s%%", arg.replaceAll(" ", "%")) : null;
 	}
 
 }

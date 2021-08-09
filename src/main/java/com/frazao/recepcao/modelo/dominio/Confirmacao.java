@@ -2,21 +2,21 @@ package com.frazao.recepcao.modelo.dominio;
 
 public enum Confirmacao {
 
-   S("S"), N("N");
+	N("N"), S("S");
 
-   private String descricao;
+	private String descricao;
 
-   private Confirmacao(String descricao) {
-      this.descricao = descricao;
-   }
+	private Confirmacao(String descricao) {
+		this.descricao = descricao;
+	}
 
-   public String getDescricao() {
-      return this.descricao;
-   }
+	public String getDescricao() {
+		return this.descricao;
+	}
 
-   @Override
-   public String toString() {
-      return this.getDescricao();
-   }
+	@Override
+	public String toString() {
+		return this.getDescricao();
+	}
 
 }

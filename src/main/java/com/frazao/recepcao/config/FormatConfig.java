@@ -17,14 +17,10 @@ public class FormatConfig {
 
 	public static final String[] DATE_FORMAT = { "yyyy-MM-dd", "dd/MM/yyyy", };
 
-	public static final String[] DATETIME_FORMAT = { 
-			FormatConfig.DATE_FORMAT[0] + "'T'HH:mm",
-			FormatConfig.DATE_FORMAT[0] + "'T'HH:mm:ss",
-			FormatConfig.DATE_FORMAT[0] + "'T'HH:mm:ss.SSS",
-			FormatConfig.DATE_FORMAT[1] + " HH:mm", 
-			FormatConfig.DATE_FORMAT[1] + " HH:mm:ss",
-			FormatConfig.DATE_FORMAT[1] + " HH:mm:ss.SSS",
-			};
+	public static final String[] DATETIME_FORMAT = { FormatConfig.DATE_FORMAT[0] + "'T'HH:mm",
+			FormatConfig.DATE_FORMAT[0] + "'T'HH:mm:ss", FormatConfig.DATE_FORMAT[0] + "'T'HH:mm:ss.SSS",
+			FormatConfig.DATE_FORMAT[1] + " HH:mm", FormatConfig.DATE_FORMAT[1] + " HH:mm:ss",
+			FormatConfig.DATE_FORMAT[1] + " HH:mm:ss.SSS", };
 
 	// este código atua nas variáveis incluidas no body das requisições
 	@Bean

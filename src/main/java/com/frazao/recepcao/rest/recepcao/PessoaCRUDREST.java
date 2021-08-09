@@ -15,13 +15,13 @@ import com.frazao.recepcao.rest.CRUDREST;
 @RequestMapping(value = "pessoa")
 public class PessoaCRUDREST extends CRUDREST<Pessoa, java.lang.Integer, PessoaFiltroDTO, PessoaBO> {
 
-   public PessoaCRUDREST(@Autowired PessoaBO bo) {
-      super(bo);
-   }
+	public PessoaCRUDREST(@Autowired PessoaBO bo) {
+		super(bo);
+	}
 
-   public PessoaBO getBO() {
-	  return super.getBO();
-   }
+	public PessoaBO getBO() {
+		return super.getBO();
+	}
 
 	@Override
 	public Pessoa prepararForm(Pessoa modelo, Principal usuario) throws Exception {

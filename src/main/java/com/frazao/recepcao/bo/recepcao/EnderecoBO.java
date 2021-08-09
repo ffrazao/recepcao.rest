@@ -11,9 +11,8 @@ import com.frazao.recepcao.modelo.entidade.recepcao.Endereco;
 @Service
 public class EnderecoBO extends CRUDBO<Endereco, java.lang.Integer, EnderecoFiltroDTO, EnderecoDAO> {
 
-   public EnderecoBO(@Autowired EnderecoDAO dao) {
-      super(Endereco.class, dao);
-   }
+	public EnderecoBO(@Autowired EnderecoDAO dao) {
+		super(Endereco.class, dao);
+	}
 
 }
-

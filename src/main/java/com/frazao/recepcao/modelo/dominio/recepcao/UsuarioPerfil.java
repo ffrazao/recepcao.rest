@@ -2,21 +2,21 @@ package com.frazao.recepcao.modelo.dominio.recepcao;
 
 public enum UsuarioPerfil {
 
-   ADMIN("Admin"), PARCEIRO("Parceiro"), CLIENTE("Cliente");
+	ADMIN("Admin"), CLIENTE("Cliente"), PARCEIRO("Parceiro");
 
-   private String descricao;
+	private String descricao;
 
-   private UsuarioPerfil(String descricao) {
-      this.descricao = descricao;
-   }
+	private UsuarioPerfil(String descricao) {
+		this.descricao = descricao;
+	}
 
-   public String getDescricao() {
-      return this.descricao;
-   }
+	public String getDescricao() {
+		return this.descricao;
+	}
 
-   @Override
-   public String toString() {
-      return this.getDescricao();
-   }
+	@Override
+	public String toString() {
+		return this.getDescricao();
+	}
 
 }

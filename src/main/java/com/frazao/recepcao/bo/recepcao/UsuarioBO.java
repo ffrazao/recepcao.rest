@@ -117,17 +117,17 @@ public class UsuarioBO extends CRUDBO<Usuario, Integer, UsuarioFiltroDTO, Usuari
 		return result == null || result != null && result.getId().equals(id);
 	}
 
+	public boolean pessoaDisponivel(final Integer valor, final Integer id) {
+		final Usuario result = this.getDAO().findByPessoaId(valor);
+		return result == null || result != null && result.getId().equals(id);
+	}
+
 	@Override
 	public Usuario prepararForm(@Valid final Usuario modelo, Principal usuario) throws BOException {
 		final Usuario result = super.prepararForm(modelo, usuario);
 		result.setAtivo(Confirmacao.S);
 		result.setPerfil("");
 		return result;
-	}
-
-	public boolean pessoaDisponivel(final Integer valor, final Integer id) {
-		final Usuario result = this.getDAO().findByPessoaId(valor);
-		return result == null || result != null && result.getId().equals(id);
 	}
 
 	@Transactional

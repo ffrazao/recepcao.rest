@@ -13,15 +13,16 @@ import com.frazao.recepcao.rest.CRUDREST;
 
 @RestController
 @RequestMapping(value = "unidade-medida")
-public class UnidadeMedidaCRUDREST extends CRUDREST<UnidadeMedida, java.lang.Integer, UnidadeMedidaFiltroDTO, UnidadeMedidaBO> {
+public class UnidadeMedidaCRUDREST
+		extends CRUDREST<UnidadeMedida, java.lang.Integer, UnidadeMedidaFiltroDTO, UnidadeMedidaBO> {
 
-   public UnidadeMedidaCRUDREST(@Autowired UnidadeMedidaBO bo) {
-      super(bo);
-   }
+	public UnidadeMedidaCRUDREST(@Autowired UnidadeMedidaBO bo) {
+		super(bo);
+	}
 
-   public UnidadeMedidaBO getBO() {
-	  return super.getBO();
-   }
+	public UnidadeMedidaBO getBO() {
+		return super.getBO();
+	}
 
 	@Override
 	public UnidadeMedida prepararForm(UnidadeMedida modelo, Principal usuario) throws Exception {

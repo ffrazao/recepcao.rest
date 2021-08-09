@@ -13,15 +13,16 @@ import com.frazao.recepcao.rest.CRUDREST;
 
 @RestController
 @RequestMapping(value = "pessoa-endereco")
-public class PessoaEnderecoCRUDREST extends CRUDREST<PessoaEndereco, java.lang.Integer, PessoaEnderecoFiltroDTO, PessoaEnderecoBO> {
+public class PessoaEnderecoCRUDREST
+		extends CRUDREST<PessoaEndereco, java.lang.Integer, PessoaEnderecoFiltroDTO, PessoaEnderecoBO> {
 
-   public PessoaEnderecoCRUDREST(@Autowired PessoaEnderecoBO bo) {
-      super(bo);
-   }
+	public PessoaEnderecoCRUDREST(@Autowired PessoaEnderecoBO bo) {
+		super(bo);
+	}
 
-   public PessoaEnderecoBO getBO() {
-	  return super.getBO();
-   }
+	public PessoaEnderecoBO getBO() {
+		return super.getBO();
+	}
 
 	@Override
 	public PessoaEndereco prepararForm(PessoaEndereco modelo, Principal usuario) throws Exception {

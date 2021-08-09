@@ -11,13 +11,13 @@ public class BOException extends Exception {
 	public BOException(final String message) {
 		super(message);
 	}
-	
-	public BOException(Throwable t) {
-		super (t);
-	}
-	
+
 	public BOException(String message, Throwable t) {
-		super (message, t);
+		super(message, t);
+	}
+
+	public BOException(Throwable t) {
+		super(t);
 	}
 
 }

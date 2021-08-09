@@ -22,7 +22,7 @@ public class RecuperarSenhaDTO implements DTO {
 		this.setEmail(email);
 	}
 
-	public void setEmail(String email) {	
+	public void setEmail(String email) {
 	}
 
 }

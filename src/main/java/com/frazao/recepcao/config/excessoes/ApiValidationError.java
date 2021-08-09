@@ -8,18 +8,25 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 public class ApiValidationError extends ApiSubError {
-	
-	private String object;
-	
+
 	private String field;
-	
-	private Object rejectedValue;
-	
+
 	private String message;
+
+	private String object;
+
+	private Object rejectedValue;
 
 	ApiValidationError(String object, String message) {
 		this.object = object;
 		this.message = message;
+	}
+
+	public ApiValidationError(String object, String field, Object rejectedValue, String message) {
+		this.field = field;
+		this.message = message;
+		this.object = object;
+		this.rejectedValue = rejectedValue;
 	}
 
 }

@@ -15,13 +15,13 @@ import com.frazao.recepcao.rest.CRUDREST;
 @RequestMapping(value = "endereco")
 public class EnderecoCRUDREST extends CRUDREST<Endereco, java.lang.Integer, EnderecoFiltroDTO, EnderecoBO> {
 
-   public EnderecoCRUDREST(@Autowired EnderecoBO bo) {
-      super(bo);
-   }
+	public EnderecoCRUDREST(@Autowired EnderecoBO bo) {
+		super(bo);
+	}
 
-   public EnderecoBO getBO() {
-	  return super.getBO();
-   }
+	public EnderecoBO getBO() {
+		return super.getBO();
+	}
 
 	@Override
 	public Endereco prepararForm(Endereco modelo, Principal usuario) throws Exception {
