@@ -31,7 +31,7 @@ public class Local extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "endereco_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.Local enderecoId;
+	private Endereco endereco;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,7 +43,7 @@ public class Local extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "unidade_organizacional_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.Local unidadeOrganizacionalId;
+	private UnidadeOrganizacional unidadeOrganizacional;
 
 	@Transient
 	private List<Visita> visitaList;

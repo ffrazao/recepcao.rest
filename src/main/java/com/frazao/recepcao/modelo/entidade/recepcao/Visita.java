@@ -1,5 +1,6 @@
 package com.frazao.recepcao.modelo.entidade.recepcao;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -33,11 +34,11 @@ public class Visita extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "autorizador_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.Visita autorizadorId;
+	private Funcionario autorizador;
 
 	@Column(name = "entrada")
 	@Basic
-	private java.time.LocalDateTime entrada;
+	private LocalDateTime entrada;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,11 +47,11 @@ public class Visita extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "incluido_por_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.Visita incluidoPorId;
+	private Usuario incluidoPor;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "local_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.Visita localId;
+	private Local local;
 
 	@Column(name = "motivo")
 	@Lob
@@ -58,7 +59,7 @@ public class Visita extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "saida")
 	@Basic
-	private java.time.LocalDateTime saida;
+	private LocalDateTime saida;
 
 	@Transient
 	private List<VisitaVisitante> visitaVisitanteList;

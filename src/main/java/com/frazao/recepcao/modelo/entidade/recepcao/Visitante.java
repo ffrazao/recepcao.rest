@@ -5,27 +5,24 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "Visitante")
-@Table(schema = "recepcao", name = "visitante")
+@Table(name = "visitante")
+@PrimaryKeyJoinColumn(name = "id")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Visitante extends EntidadeBaseTemId<Pessoa> {
+public class Visitante extends Pessoa {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,17 +31,11 @@ public class Visitante extends EntidadeBaseTemId<Pessoa> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "entidade_representante_id")
-	private Visitante entidadeRepresentanteId;
+	private EntidadeRepresentante entidadeRepresentanteId;
 
 	@Column(name = "foto")
 	@Lob
 	private byte[] foto;
-
-	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@JoinColumn(name = "id")
-	@Id
-	private Pessoa id;
 
 	@Column(name = "telefone")
 	private String telefone;

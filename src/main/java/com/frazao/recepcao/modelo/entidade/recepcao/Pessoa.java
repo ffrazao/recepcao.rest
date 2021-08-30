@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -20,10 +22,10 @@ import lombok.NoArgsConstructor;
 
 @Entity(name = "Pessoa")
 @Table(name = "pessoa")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class Pessoa extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;

@@ -20,6 +20,7 @@ public class TokenEnhancerConfig implements TokenEnhancer {
 	@Autowired
 	private UsuarioBO bo;
 
+	@SuppressWarnings("unused")
 	@Autowired
 	private PessoaBO pessoaBo;
 

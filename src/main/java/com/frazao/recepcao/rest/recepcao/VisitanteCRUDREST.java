@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.frazao.recepcao.bo.recepcao.VisitanteBO;
 import com.frazao.recepcao.modelo.dto.recepcao.VisitanteFiltroDTO;
-import com.frazao.recepcao.modelo.entidade.recepcao.Pessoa;
 import com.frazao.recepcao.modelo.entidade.recepcao.Visitante;
 import com.frazao.recepcao.rest.CRUDREST;
 
 @RestController
 @RequestMapping(value = "visitante")
-public class VisitanteCRUDREST extends CRUDREST<Visitante, Pessoa, VisitanteFiltroDTO, VisitanteBO> {
+public class VisitanteCRUDREST extends CRUDREST<Visitante, Integer, VisitanteFiltroDTO, VisitanteBO> {
 
 	public VisitanteCRUDREST(@Autowired VisitanteBO bo) {
 		super(bo);
