@@ -50,8 +50,12 @@ public class Visita extends EntidadeBaseTemId<Integer> {
 	private Usuario incluidoPor;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "local_id")
-	private Local local;
+	@JoinColumn(name = "local_entrada_id")
+	private Local localEntrada;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "local_visita_id")
+	private Local localVisita;
 
 	@Column(name = "motivo")
 	@Lob

@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class VisitaVisitante extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +30,7 @@ public class VisitaVisitante extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "entidade_representante_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.VisitaVisitante entidadeRepresentanteId;
+	private EntidadeRepresentante entidadeRepresentante;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,10 +42,10 @@ public class VisitaVisitante extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "visita_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.VisitaVisitante visitaId;
+	private Visita visita;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "visitante_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.VisitaVisitante visitanteId;
+	private Visitante visitante;
 
 }
