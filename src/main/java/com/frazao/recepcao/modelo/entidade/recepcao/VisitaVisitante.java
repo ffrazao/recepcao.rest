@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class VisitaVisitante extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;

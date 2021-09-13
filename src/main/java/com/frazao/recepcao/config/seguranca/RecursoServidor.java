@@ -42,7 +42,7 @@ public class RecursoServidor extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(final ResourceServerSecurityConfigurer resources) throws Exception {
 		final TokenStore tokenStore = new JdbcTokenStore(this.datasource);
-		resources.resourceId("recepcao.api").tokenStore(tokenStore);
+		resources.resourceId("recepcao_web.api").tokenStore(tokenStore);
 	}
 
 }
