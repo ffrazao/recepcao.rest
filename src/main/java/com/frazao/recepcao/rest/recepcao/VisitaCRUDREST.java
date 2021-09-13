@@ -1,8 +1,11 @@
 package com.frazao.recepcao.rest.recepcao;
 
 import java.security.Principal;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +29,11 @@ public class VisitaCRUDREST extends CRUDREST<Visita, java.lang.Integer, VisitaFi
 	@Override
 	public Visita prepararForm(Visita modelo, Principal usuario) throws Exception {
 		return modelo == null ? new Visita() : modelo;
+	}
+	
+	@PutMapping("/registrar-saida/{id}")
+	public Map<String, Object> registrarSaida(@PathVariable Integer id, Principal usuario) {
+		return getBO().registrarSaida(id, usuario);
 	}
 
 }

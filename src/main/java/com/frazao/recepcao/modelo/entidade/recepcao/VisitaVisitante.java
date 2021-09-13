@@ -1,5 +1,8 @@
 package com.frazao.recepcao.modelo.entidade.recepcao;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -31,22 +35,31 @@ public class VisitaVisitante extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "entidade_representante_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.VisitaVisitante entidadeRepresentanteId;
+	private EntidadeRepresentante entidadeRepresentante;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
 
+	@Column(name = "saida")
+	@Basic
+	private LocalDateTime saida;
+
 	@Column(name = "telefone")
 	private String telefone;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "visita_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.VisitaVisitante visitaId;
+	@JsonIgnore
+	private Visita visita;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "visitante_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.VisitaVisitante visitanteId;
+	private Visitante visitante;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "saida_usuario_id")
+	private Usuario saidaUsuario;
 
 }

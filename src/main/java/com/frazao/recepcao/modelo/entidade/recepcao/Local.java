@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.frazao.recepcao.modelo.dominio.Confirmacao;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -44,7 +47,10 @@ public class Local extends EntidadeBaseTemId<Integer> {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "unidade_organizacional_id")
 	private UnidadeOrganizacional unidadeOrganizacional;
-
+	
+	@Enumerated(EnumType.STRING)
+	private Confirmacao portaria;
+	
 	@Transient
 	private List<Visita> visitaList;
 

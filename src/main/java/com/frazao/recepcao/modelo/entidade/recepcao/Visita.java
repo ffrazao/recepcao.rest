@@ -1,3 +1,4 @@
+
 package com.frazao.recepcao.modelo.entidade.recepcao;
 
 import java.time.LocalDateTime;
@@ -13,8 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
@@ -27,7 +28,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class Visita extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
@@ -50,18 +50,22 @@ public class Visita extends EntidadeBaseTemId<Integer> {
 	private Usuario incluidoPor;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "local_id")
-	private Local local;
+	@JoinColumn(name = "entrada_local_id")
+	private Local entradaLocal;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "destino_local_id")
+	private Local destinoLocal;
 
 	@Column(name = "motivo")
 	@Lob
 	private String motivo;
 
-	@Column(name = "saida")
-	@Basic
-	private LocalDateTime saida;
-
-	@Transient
+	@OneToMany(mappedBy = "visita")
 	private List<VisitaVisitante> visitaVisitanteList;
+	
+	public String toString() {
+		return String.format("Visita [${this.id}]", this.id) ;
+	}
 
 }

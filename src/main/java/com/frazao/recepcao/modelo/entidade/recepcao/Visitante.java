@@ -31,7 +31,7 @@ public class Visitante extends Pessoa {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "entidade_representante_id")
-	private EntidadeRepresentante entidadeRepresentanteId;
+	private EntidadeRepresentante entidadeRepresentante;
 
 	@Column(name = "foto")
 	@Lob
