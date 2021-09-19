@@ -1,14 +1,11 @@
 package com.frazao.recepcao.modelo.entidade.recepcao;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
@@ -33,11 +30,5 @@ public class EntidadeRepresentante extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "nome")
 	private String nome;
-
-	@Transient
-	private List<Visitante> visitanteList;
-
-	@Transient
-	private List<VisitaVisitante> visitaVisitanteList;
 
 }

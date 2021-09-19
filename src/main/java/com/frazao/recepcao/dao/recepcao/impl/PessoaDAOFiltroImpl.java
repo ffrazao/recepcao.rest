@@ -44,7 +44,10 @@ public class PessoaDAOFiltroImpl implements PessoaDAOFiltro {
 		// query.setParameter("tipo", f.getTipo().stream().map(v ->
 		// v.name()).collect(Collectors.toSet()));
 		// }
-		return query.getResultList();
+		
+		Collection<Pessoa> result = query.getResultList();
+		
+		return result;
 
 	}
 
