@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -21,14 +22,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class PessoaEndereco extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "endereco_id")
-	private Endereco enderecoId;
+	private Endereco endereco;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,7 +37,8 @@ public class PessoaEndereco extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pessoa_id")
-	private Pessoa pessoaId;
+	@JsonIgnore
+	private Pessoa pessoa;
 
 	public PessoaEndereco(Integer id) {
 		super(id);

@@ -2,10 +2,13 @@ package com.frazao.recepcao.modelo.entidade;
 
 import java.io.Serializable;
 
+import javax.persistence.MappedSuperclass;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@MappedSuperclass
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode

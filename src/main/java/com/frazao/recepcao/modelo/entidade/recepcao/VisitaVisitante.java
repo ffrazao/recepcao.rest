@@ -30,7 +30,7 @@ public class VisitaVisitante extends EntidadeBaseTemId<Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "e_mail")
-	private String eMail;
+	private String email;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "entidade_representante_id")

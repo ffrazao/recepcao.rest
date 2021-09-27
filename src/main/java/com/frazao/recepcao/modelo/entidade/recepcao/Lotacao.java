@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -21,14 +22,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class Lotacao extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "funcionario_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.Lotacao funcionarioId;
+	@JsonIgnore
+	private Funcionario funcionario;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,6 +41,6 @@ public class Lotacao extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "unidade_organizacional_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.Lotacao unidadeOrganizacionalId;
+	private UnidadeOrganizacional unidadeOrganizacional;
 
 }

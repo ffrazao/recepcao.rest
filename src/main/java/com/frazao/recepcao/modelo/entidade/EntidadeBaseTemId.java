@@ -1,9 +1,13 @@
 package com.frazao.recepcao.modelo.entidade;
 
+import javax.persistence.MappedSuperclass;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode.Include;
 
+@MappedSuperclass
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
@@ -11,22 +15,17 @@ public abstract class EntidadeBaseTemId<Id> extends EntidadeBase implements TemI
 
 	private static final long serialVersionUID = 1L;
 
-	private Id id;
-
 	public EntidadeBaseTemId(Id id) {
 		super();
 		this.setId(id);
 	}
 
 	@Override
-	public Id getId() {
-		return this.id;
-	}
+	@Include
+	public abstract Id getId();
 
 	@Override
-	public void setId(Id id) {
-		this.id = id;
-	}
+	public abstract void setId(Id id);
 
 	@Override
 	public String toString() {
