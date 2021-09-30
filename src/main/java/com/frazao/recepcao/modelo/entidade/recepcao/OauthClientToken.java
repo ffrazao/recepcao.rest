@@ -25,7 +25,7 @@ public class OauthClientToken extends EntidadeBase {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "authentication_id")
 	private String authenticationId;
 

@@ -39,7 +39,7 @@ public class Endereco extends EntidadeBaseTemId<Integer> {
 	private String complemento;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 

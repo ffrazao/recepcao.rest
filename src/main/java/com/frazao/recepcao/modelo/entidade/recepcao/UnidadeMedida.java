@@ -40,7 +40,7 @@ public class UnidadeMedida extends EntidadeBaseTemId<Integer> {
 	private String codigo;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 

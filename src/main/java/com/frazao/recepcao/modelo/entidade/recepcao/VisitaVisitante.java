@@ -37,7 +37,7 @@ public class VisitaVisitante extends EntidadeBaseTemId<Integer> {
 	private EntidadeRepresentante entidadeRepresentante;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 

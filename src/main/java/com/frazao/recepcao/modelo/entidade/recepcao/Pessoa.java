@@ -48,14 +48,14 @@ public class Pessoa extends EntidadeBaseTemId<Integer> {
 	private String email;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
 	@Column(name = "nome")
 	private String nome;
 
-	@OneToMany(mappedBy = "pessoa")
+	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PessoaEndereco> pessoaEnderecoList;
 
 	@Column(name = "tipo")
@@ -69,11 +69,11 @@ public class Pessoa extends EntidadeBaseTemId<Integer> {
 		super(id);
 	}
 	
-    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
     @PrimaryKeyJoinColumn
     private Visitante visitante;
 
-    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
     @PrimaryKeyJoinColumn
     private Funcionario funcionario;
     

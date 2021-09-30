@@ -39,7 +39,7 @@ public class OauthClientDetails extends EntidadeBase {
 	private String autoapprove;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "client_id")
 	private String clientId;
 

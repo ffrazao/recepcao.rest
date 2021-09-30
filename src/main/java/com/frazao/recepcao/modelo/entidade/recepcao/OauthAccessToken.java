@@ -29,7 +29,7 @@ public class OauthAccessToken extends EntidadeBase {
 	private byte[] authentication;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "authentication_id")
 	private String authenticationId;
 
