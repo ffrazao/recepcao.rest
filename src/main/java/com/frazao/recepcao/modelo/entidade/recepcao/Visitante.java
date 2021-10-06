@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -55,7 +56,7 @@ public class Visitante extends EntidadeBaseTemId<Integer> {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
-    @JsonIgnore
+	@JsonIgnoreProperties({ "visitante" })
     private Pessoa pessoa;
 
 	@Override

@@ -74,6 +74,11 @@ public class Usuario extends EntidadeBaseTemId<Integer> {
 	public Usuario(final Integer id) {
 		super(id);
 	}
+	
+	public Usuario(final Integer id, final String login) {
+		this(id);
+		this.setLogin(login);
+	}
 
 	public Optional<Pessoa> getPessoa() {
 		return Optional.ofNullable(this.pessoa);
