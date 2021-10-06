@@ -14,7 +14,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
@@ -30,11 +29,6 @@ import lombok.NoArgsConstructor;
 public class Visitante extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@Column(name = "id")
-//	@Include
-	private Integer id;
 
 	@Column(name = "e_mail")
 	private String eMail;
@@ -47,22 +41,26 @@ public class Visitante extends EntidadeBaseTemId<Integer> {
 	@Lob
 	private byte[] foto;
 
+	@Id
+	@Column(name = "id")
+	private Integer id;
+
+	@OneToOne
+	@MapsId
+	@JoinColumn(name = "id")
+
+	@JsonIgnoreProperties(value = { "visitante" })
+	private Pessoa pessoa;
+
 	@Column(name = "telefone")
 	private String telefone;
 
 	@Transient
 	private List<VisitaVisitante> visitaVisitanteList;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "id")
-	@JsonIgnoreProperties({ "visitante" })
-    private Pessoa pessoa;
-
 	@Override
 	public String toString() {
 		return String.format("Id = %d", this.getId());
 	}
-
 
 }
