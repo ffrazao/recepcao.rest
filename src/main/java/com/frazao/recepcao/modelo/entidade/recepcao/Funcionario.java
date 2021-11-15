@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -37,14 +36,13 @@ public class Funcionario extends EntidadeBaseTemId<Integer> {
 	@Column(name = "matricula")
 	private String matricula;
 
-	@Column(name = "ramal")
-	private String ramal;
-
 	@OneToOne
 	@MapsId
 	@JoinColumn(name = "id")
-	@JsonIgnoreProperties({ "funcionario" })
 	private Pessoa pessoa;
+
+	@Column(name = "ramal")
+	private String ramal;
 
 	@Override
 	public String toString() {

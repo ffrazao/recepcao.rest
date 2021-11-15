@@ -7,7 +7,6 @@ import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 
-import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -71,8 +70,9 @@ public class RestApiError {
 	 * @param cv the ConstraintViolation
 	 */
 	private void addValidationError(ConstraintViolation<?> cv) {
-		this.addValidationError(cv.getRootBeanClass().getSimpleName(),
-				((PathImpl) cv.getPropertyPath()).getLeafNode().asString(), cv.getInvalidValue(), cv.getMessage());
+//		this.addValidationError(cv.getRootBeanClass().getSimpleName(),
+//				((Path) cv.getPropertyPath()). getLeafNode().asString(), cv.getInvalidValue(), cv.getMessage());
+		throw new RuntimeException("Entender o porque!");
 	}
 
 	private void addValidationError(FieldError fieldError) {

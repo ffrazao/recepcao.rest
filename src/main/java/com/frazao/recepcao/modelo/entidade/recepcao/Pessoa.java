@@ -11,11 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.frazao.recepcao.modelo.dominio.recepcao.PessoaTipo;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
@@ -56,6 +55,7 @@ public class Pessoa extends EntidadeBaseTemId<Integer> {
 	private String nome;
 
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnoreProperties(value = { "pessoa" })
 	private List<PessoaEndereco> pessoaEnderecoList;
 
 	@Column(name = "tipo")
@@ -68,15 +68,7 @@ public class Pessoa extends EntidadeBaseTemId<Integer> {
 	public Pessoa(Integer id) {
 		super(id);
 	}
-	
-    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
-    @PrimaryKeyJoinColumn
-    private Visitante visitante;
 
-    @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
-    @PrimaryKeyJoinColumn
-    private Funcionario funcionario;
-    
 	@Override
 	public String toString() {
 		return String.format("Id = %d", this.getId());

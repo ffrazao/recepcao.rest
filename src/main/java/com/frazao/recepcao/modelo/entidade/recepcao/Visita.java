@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -47,6 +50,7 @@ public class Visita extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "incluido_por_id")
+	@JsonIncludeProperties({ "id", "login" })
 	private Usuario incluidoPor;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -61,11 +65,12 @@ public class Visita extends EntidadeBaseTemId<Integer> {
 	@Lob
 	private String motivo;
 
-	@OneToMany(mappedBy = "visita")
+	@OneToMany(mappedBy = "visita", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnoreProperties({"visita"})
 	private List<VisitaVisitante> visitaVisitanteList;
 	
 	public String toString() {
-		return String.format("Visita [${this.id}]", this.id) ;
+		return String.format("Visita [%d]", this.id) ;
 	}
 
 }

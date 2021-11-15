@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -50,15 +50,15 @@ public class VisitaVisitante extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "visita_id")
-	@JsonIgnore
 	private Visita visita;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "visitante_id")
 	private Visitante visitante;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "saida_usuario_id")
+	@JsonIncludeProperties({ "id", "login" })
 	private Usuario saidaUsuario;
 
 }

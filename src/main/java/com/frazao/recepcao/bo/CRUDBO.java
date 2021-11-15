@@ -12,12 +12,16 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.frazao.recepcao.bo.recepcao.UsuarioBO;
 import com.frazao.recepcao.dao.Filtro;
 import com.frazao.recepcao.modelo.dto.FiltroDTO;
 import com.frazao.recepcao.modelo.entidade.EntidadeBase;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
+import com.frazao.recepcao.modelo.entidade.recepcao.Usuario;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +34,25 @@ public abstract class CRUDBO<E extends EntidadeBaseTemId<Id>, Id, F extends Filt
 	private final D dao;
 
 	private final Class<E> entidadeClasse;
+
+	@Lazy(true)
+	@Autowired
+	private UsuarioBO usuarioBO;
+	
+	public Usuario getUsuario(String login) {
+		Usuario result = this.usuarioBO.findByLogin(login);
+		return result;
+	}
+	
+	public Usuario getUsuarioSomenteId(String login) {
+		Usuario result = this.getUsuario(login);
+		return new Usuario(result.getId());
+	}
+	
+	public Usuario getUsuarioSomenteIdLogin(String login) {
+		Usuario result = this.getUsuario(login);
+		return new Usuario(result.getId(), result.getLogin());
+	}
 
 	public CRUDBO(final Class<E> clazz, final D dao) {
 		if (CRUDBO.log.isDebugEnabled()) {

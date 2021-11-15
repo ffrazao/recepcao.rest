@@ -1,6 +1,5 @@
 package com.frazao.recepcao.bo.recepcao;
 
-
 import java.security.Principal;
 import java.util.Collection;
 import java.util.HashMap;
@@ -62,6 +61,16 @@ public class VisitaBO extends CRUDBO<Visita, java.lang.Integer, VisitaFiltroDTO,
 		result.put("saidaUsuario", saidaUsuario);
 		result.put("saida", saida.orElse(null).getSaida());
 		return result;
+	}
+
+	@Override
+	public Visita entrando(@Valid Visita t, @Valid Visita anterior, String acao) throws BOException {
+		t.getVisitaVisitanteList().forEach(vv -> {
+			if (vv.getSaidaUsuario() != null && vv.getSaidaUsuario().getId() == null) {
+				vv.setSaidaUsuario(this.getUsuario(vv.getSaidaUsuario().getLogin()));
+			}
+		});
+		return super.entrando(t, anterior, acao);
 	}
 
 }

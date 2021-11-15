@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frazao.recepcao.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -38,7 +37,6 @@ public class PessoaEndereco extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pessoa_id")
-	@JsonIgnore
 	private Pessoa pessoa;
 
 	public PessoaEndereco(Integer id) {

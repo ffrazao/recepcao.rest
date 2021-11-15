@@ -1,6 +1,7 @@
 package com.frazao.recepcao.dao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,6 +46,10 @@ public interface Filtro<T, F extends FiltroDTO> {
 		return itens != null
 				? String.format("(%s)", itens.stream().map(i -> " ?").collect(Collectors.joining(",")).trim())
 				: null;
+	}
+	
+	default String in(final Object[] itens) {
+		return in(Arrays.asList(itens));
 	}
 
 	default String like(final String arg) {

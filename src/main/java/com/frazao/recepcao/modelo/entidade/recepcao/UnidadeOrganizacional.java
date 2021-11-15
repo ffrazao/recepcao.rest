@@ -45,7 +45,7 @@ public class UnidadeOrganizacional extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pai_id")
-	private com.frazao.recepcao.modelo.entidade.recepcao.UnidadeOrganizacional paiId;
+	private UnidadeOrganizacional paiId;
 
 	@Transient
 	private List<UnidadeOrganizacional> unidadeOrganizacionalList;

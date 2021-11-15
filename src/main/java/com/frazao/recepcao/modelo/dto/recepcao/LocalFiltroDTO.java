@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
-
-public class LocalFiltroDTO implements FiltroDTO {
+@EqualsAndHashCode(callSuper = false)
+public class LocalFiltroDTO extends FiltroDTO {
 
 	private static final long serialVersionUID = 1L;
 
