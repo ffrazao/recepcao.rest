@@ -36,18 +36,18 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
 
 # LOG
-logging:
-  level:
-    # root: debug
-    com.frazao.recepcao: trace
-    org.hibernate.SQL: debug
-    org.springframework.web: trace
-    org.springframework.security: trace
-    org.springframework.orm: debug
-    org.springframework.orm.jpa: debug
-    org.springframework.transaction: debug
-    org.springframework.transaction.interceptor: trace
-    org.springframework.jdbc: debug
+#logging:
+#  level:
+#    root: debug
+#    com.frazao.recepcao: trace
+#    org.hibernate.SQL: debug
+#    org.springframework.web: trace
+#    org.springframework.security: trace
+#    org.springframework.orm: debug
+#    org.springframework.orm.jpa: debug
+#    org.springframework.transaction: debug
+#    org.springframework.transaction.interceptor: trace
+#    org.springframework.jdbc: debug
     
 # VALORES PADRAO
 default:
